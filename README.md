@@ -13,9 +13,11 @@ information out of them.
 Open Cv chess board corners
 
 Finding Corners
-In this exercise, you'll use the OpenCV functions ```python 
+In this exercise, you'll use the OpenCV functions 
+```python 
 findChessboardCorners()
-``` and ```python 
+```and
+```python 
 drawChessboardCorners() 
 ```to 
 automatically find and draw corners in an image of a chessboard pattern.
@@ -24,3 +26,47 @@ sample ipython notebooks
 
 https://github.com/JustinHeaton/Advanced-Lane-Finding
 https://github.com/jeremy-shannon/CarND-Advanced-Lane-Lines
+
+Quiz 1
+
+```python
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+# prepare object points
+nx = 8#TODO: enter the number of inside corners in x
+ny = 6#TODO: enter the number of inside corners in y
+
+# Make a list of calibration images
+fname = 'calibration_test.png'
+img = cv2.imread(fname)
+
+# Convert to grayscale
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Find the chessboard corners
+ret, corners = cv2.findChessboardCorners(gray, (nx, ny), None)
+
+# If found, draw corners
+if ret == True:
+    # Draw and display the corners
+    cv2.drawChessboardCorners(img, (nx, ny), corners, ret)
+    plt.imshow(img)
+```
+
+at least have 20 images for calibration; and one test image
+```python
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+%matplotlib inline
+
+## reading the image
+img = mpimg.read('calibration_image1.png')
+plt.imshow(img)
+
+objectpoints = []
+imagepoints = []
