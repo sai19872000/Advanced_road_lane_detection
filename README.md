@@ -70,3 +70,12 @@ plt.imshow(img)
 
 objectpoints = []
 imagepoints = []
+
+objp = np.zeros((8*6,3),np.float32)
+objp[:,:2] = np.mgrid(0:8,0:6).T.reshape(-1,2)
+
+gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+
+ret, corners = cv2.findChessboardCorners(gray,(8,6),None)
+if ret == True:
+    img
