@@ -64,18 +64,35 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 %matplotlib inline
 
+#read all the calibration images 
+import glob
+matplotlib qt
+
+images = glob.glob('calibration*.jpg')
+
 ## reading the image
 img = mpimg.read('calibration_image1.png')
 plt.imshow(img)
 
-objectpoints = []
-imagepoints = []
+objpoints = []
+imgpoints = []
 
 objp = np.zeros((8*6,3),np.float32)
 objp[:,:2] = np.mgrid(0:8,0:6).T.reshape(-1,2)
 
-gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+for fname in images:
+    img = mpimg.imread(fname)
+    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
-ret, corners = cv2.findChessboardCorners(gray,(8,6),None)
-if ret == True:
-    img
+    ret, corners = cv2.findChessboardCorners(gray,(8,6),None)
+
+    if ret == True:
+        imgpoints.append(corners)
+        objpoints.append(objp)
+        img = cv2.drawChessboardCorners(img,(8,6),corners,ret)
+        plt.imshow(img)
+    
+
+    
+    
+
