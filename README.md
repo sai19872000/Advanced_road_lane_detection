@@ -91,7 +91,22 @@ for fname in images:
         objpoints.append(objp)
         img = cv2.drawChessboardCorners(img,(8,6),corners,ret)
         plt.imshow(img)
-    
+ ```
+ 
+ The two important cv2 functions 
+ ```python
+ ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
+ ```
+ 
+ used to get thr cooefficients of distrortion "dist"
+ camera matrix "mtx"
+ "rvecs and tvecs" for getting the position on the real world
+ another function is the funtion to undistort the image; this funtion takes in the image and camera matrix and distortion coefficient 
+ 
+ ```python
+ dst = cv2.undistort(img, mtx, dist, None, mtx)
+ ```
+ 
 
     
     
