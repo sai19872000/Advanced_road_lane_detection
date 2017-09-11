@@ -153,3 +153,30 @@ f(y) = Ay^2 + By + C, where A, B, and C are coefficients.
 
 A gives you the curvature of the lane line, B gives you the heading or direction that the line is pointing, and C gives you the position of the line based on how far away it is from the very left of an image (y = 0).
 
+## Persective transfrom using openCV
+
+Perspective transform
+
+A perspective transform maps the points in a given image to different, desired, image points with a new perspective. The perspective transform you’ll be most interested in is a bird’s-eye view transform that let’s us view a lane from above; this will be useful for calculating the lane curvature later on. Aside from creating a bird’s eye view representation of an image, a perspective transform can also be used for all kinds of different view points.
+
+python implementation 
+
+```python
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+%matplotlib qt
+
+img = mpimg.imread('../road_images_video/stopsign.jpg')
+
+plt.imshow(img)
+
+%matplotllib inline
+plt.imshow(img)
+plt.plot(850,320,'.')
+plt.plot(865,450,'.')
+plt.plot(533,350,'.')
+plt.plot(535,210,'.')
+
+```
