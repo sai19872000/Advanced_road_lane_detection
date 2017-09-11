@@ -144,5 +144,12 @@ ax2.imshow(undistorted)
 ax2.set_title('Undistorted Image', fontsize=50)
 plt.subplots_adjust(left=0., right=1, top=0.9, bottom=0.)
 ```
-    
+
+step1 edge detection and masking 
+step2 perspective transform
+step3 get the curvature using a polynomial fit (2nd order polynomial)
+
+f(y) = Ay^2 + By + C, where A, B, and C are coefficients.
+
+A gives you the curvature of the lane line, B gives you the heading or direction that the line is pointing, and C gives you the position of the line based on how far away it is from the very left of an image (y = 0).
 
