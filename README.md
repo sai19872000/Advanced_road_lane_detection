@@ -16,7 +16,9 @@ Finding Corners
 In this exercise, you'll use the OpenCV functions 
 ```python 
 findChessboardCorners()
-```and
+```
+and
+
 ```python 
 drawChessboardCorners() 
 ```to 
