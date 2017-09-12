@@ -564,3 +564,6 @@ def dir_threshold(img, sobel_kernel=3, thresh=(0, np.pi/2)):
     # Return the binary image
     return binary_output
 ```
+## Do the Combining Thresholds section
+
+##
