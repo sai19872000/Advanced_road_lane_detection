@@ -21,7 +21,8 @@ and
 
 ```python 
 drawChessboardCorners() 
-```to 
+```
+to 
 automatically find and draw corners in an image of a chessboard pattern.
 
 sample ipython notebooks
