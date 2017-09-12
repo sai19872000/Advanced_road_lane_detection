@@ -264,9 +264,11 @@ def corners_unwarp(img, nx, ny, mtx, dist):
                  # corners that were automatically detected during the undistortion steps
                  #We recommend using the automatic detection of corners in your code
             #print(np.float32([corners[0][0],corners[0+7],corners[len(corners)-1],corners[len(corners)-8]]))
-            src = np.float32([corners[0][0],corners[0+7][0], corners[len(corners)-1][0],corners[len(corners)-8][0] ])
+            src = np.float32([corners[0][0],corners[1][0], corners[9][0],corners[8][0] ])
+            print(src)
             # c) define 4 destination points dst = np.float32([[,],[,],[,],[,]])
-            dst = np.float32([[420,110],[1110,110],[1110,770],[420,770]])
+            dst = np.float32([[90,100],[240,100],[240,250],[90,250]])
+            #dst = src
             # d) use cv2.getPerspectiveTransform() to get M, the transform matrix
             M = cv2.getPerspectiveTransform(src,dst) 
             # e) use cv2.warpPerspective() to warp your image to a top-down view
