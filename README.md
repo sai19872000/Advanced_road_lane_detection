@@ -328,3 +328,28 @@ def corners_unwarp(img, nx, ny, mtx, dist):
     # Return the resulting image and matrix
     return warped, M
 ```
+## This is important
+Note: Make sure you use the correct grayscale conversion depending on how you've read in your images. Use cv2.COLOR_RGB2GRAY if you've read in an image using mpimg.imread(). Use cv2.COLOR_BGR2GRAY if you've read in an image using cv2.imread().
+
+
+Calculate the derivative in the x direction (the 1, 0 at the end denotes x direction):
+
+sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0)
+Calculate the derivative in the y direction (the 0, 1 at the end denotes y direction):
+
+sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1)
+Calculate the absolute value of the x derivative:
+
+abs_sobelx = np.absolute(sobelx)
+Convert the absolute value image to 8-bit:
+
+scaled_sobel = np.uint8(255*abs_sobelx/np.max(abs_sobelx))
+```Python
+
+thresh_min = 20
+thresh_max = 100
+sxbinary = np.zeros_like(scaled_sobel)
+sxbinary[(scaled_sobel >= thresh_min) & (scaled_sobel <= thresh_max)] = 1
+plt.imshow(sxbinary, cmap='gray')
+```
+
